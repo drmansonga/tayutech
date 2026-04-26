@@ -1,0 +1,20 @@
+---
+- name: Deploy IoT stack
+  hosts: all
+  become: yes
+  tasks:
+    - name: Skip stack deployment for Pico 2 W
+      meta: end_host
+      when: model == "pico2w"
+
+    - name: Copy docker-compose.yml (Pi 5 only)
+      copy:
+        src: ../../docker/docker-compose.yml
+        dest: /home/{{ ansible_user }}/docker-compose.yml
+        owner: "{{ ansible_user }}"
+        group: "{{ ansible_user }}"
+
+    - name: Deploy full stack with Docker Compose
+      command: docker compose -f /home/{{ ansible_user }}/docker-compose.yml up -d
+      args:
+        chdir: /home/{{ ansible_user }}
