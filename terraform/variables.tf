@@ -3,9 +3,9 @@ variable "raspberry_devices" {
     hostname     = string
     ip           = string
     user         = string
-    model        = string      # "pi5" or "pico2w"
-    role         = string      # "server" or "sensor"
-    architecture = string      # "arm64" or "armv6l" or "none"
+    model        = string # "pi5" or "pico2w"
+    role         = string # "server" or "sensor"
+    architecture = string # "arm64" or "armv6l" or "none"
   }))
   default = {
     pi5-01 = {
@@ -27,10 +27,10 @@ variable "raspberry_devices" {
     pico-01 = {
       hostname     = "iot-sensor-01"
       ip           = "192.168.1.201"
-      user         = "pi"           # or whatever user you set
+      user         = "pi" # or whatever user you set
       model        = "pico2w"
       role         = "sensor"
-      architecture = "none"         # no full OS
+      architecture = "none" # no full OS
     }
     # Add more devices here
   }
@@ -48,5 +48,5 @@ variable "ssh_private_key_path" {
 
 
 //variable "ssh_private_key_path" {
-  //default = "~/.ssh/raspberry-iot"   # or the exact path you used
+//default = "~/.ssh/raspberry-iot"   # or the exact path you used
 
